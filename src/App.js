@@ -34,35 +34,34 @@ function App() {
   };
   return (
     <div className="App">
-      {isLoading ? (
-        <h1>Is Loading ................</h1>
-      ) : (
+      <div>
+        <h3> -من فضلك ادخل النص -</h3>
+        <textarea
+          onChange={textChange}
+          rows={10}
+          style={{ width: "600px", fontSize: "20px", fontWeight: "bold" }}
+        />
         <div>
-          <h3> -من فضلك ادخل النص -</h3>
-          <textarea
-            onChange={textChange}
-            rows={10}
-            style={{ width: "600px", fontSize: "20px", fontWeight: "bold" }}
-          />
-          <div>
-            <button
-              style={{ width: "120px", height: "70px", margin: "10px" }}
-              onClick={check}
-              className="btn btn-success"
-            >
-              صحح
-            </button>
-          </div>
+          <button
+            style={{ width: "120px", height: "70px", margin: "10px" }}
+            onClick={check}
+            className="btn btn-success"
+            disabled={isLoading}
+          >
+            {isLoading ? "تحميل..." : "تصحيح"}
+          </button>
+        </div>
+        {checked && (
           <h3
             style={{
               fontWeight: "22px",
-              color: checked ? "green" : "",
+              color: "green",
             }}
           >
             {text}
           </h3>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
